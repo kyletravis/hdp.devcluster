@@ -4,7 +4,7 @@ MAINTAINER Rich Raposa, rich@hortonworks.com
 
 RUN yum -y install httpd yum-utils createrepo
 RUN chkconfig httpd on
-RUN wget -nv http://public-repo-1.hortonworks.com/HDP/centos6/2.x/updates/2.3.4.0/hdp.repo -O /etc/yum.repos.d/HDP.repo
+#RUN wget -nv http://public-repo-1.hortonworks.com/HDP/centos6/2.x/updates/2.3.4.0/hdp.repo -O /etc/yum.repos.d/HDP.repo
 
 #RUN mkdir -p /var/www/html/hdp
 #RUN cd /var/www/html/hdp; reposync -r HDP-2.3.4.0
