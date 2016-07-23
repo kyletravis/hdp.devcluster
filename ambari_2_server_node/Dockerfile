@@ -1,4 +1,4 @@
-FROM hwxu/ambari_2.2_node
+FROM hwxu/ambari_2_node
 
 MAINTAINER Rich Raposa, rich@hortonworks.com
 
