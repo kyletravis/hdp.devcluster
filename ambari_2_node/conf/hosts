@@ -1,13 +1,13 @@
-172.17.0.1	node1
-172.17.0.2 	node2
-172.17.0.3	node3
-172.17.0.4 	node4
-172.17.0.5	node5
-172.17.0.6	node6
-172.17.0.7	node7
-172.17.0.8	node8
-172.17.0.9	node9
-172.17.0.10	node10
+172.18.0.1	node1
+172.18.0.2 	node2
+172.18.0.3	node3
+172.18.0.4 	node4
+172.18.0.5	node5
+172.18.0.6	node6
+172.18.0.7	node7
+172.18.0.8	node8
+172.18.0.9	node9
+172.18.0.10	node10
 
 # The following lines are desirable for IPv6 capable hosts
 ::1     ip6-localhost ip6-loopback
