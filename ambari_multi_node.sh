@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Create a new docker network
-docker network create -d bridge exam_bridge
+docker network create --driver=bridge --subnet=172.17.0.0/16 --ip-range=172.17.0.1/10 exam_bridge
 
 #Start the Namenode/Ambari Server 
 echo "Starting Namenode/Ambari Server..."
