@@ -25,4 +25,4 @@ curl --user admin:admin -H 'X-Requested-By:HortonworksUniversity' -X POST http:/
 
 echo ""
 echo "HDP is currently installing"
-echo "Run scripts/installStatus.sh or go to http://$ambariServerInternalIP:8080 to check progress"
+echo "Run installStatus.sh or go to http://$ambariServerInternalIP:8080 to check progress"

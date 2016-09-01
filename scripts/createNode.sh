@@ -23,7 +23,7 @@ fi
 
 docker network ls | grep -q $clusterName
 if [ $? -ne 0 ]; then
-    docker network create $clusterName
+    docker network create --driver=bridge --subnet=172.18.0.0/16 --ip-range=172.18.0.1/10 $clusterName
     echo "Created network for $clusterName"
 fi
 
@@ -43,6 +43,7 @@ if [ $nodeName != $ambariServerHostName ]; then
                 --dns-search=$clusterName \
                 --restart unless-stopped \
                 -i \
+		--ip=$externalIP \
                 -t hwxu/ambari_2.2_agent_node
 else
     echo "Creating Ambari server node: $nodeName"
@@ -58,6 +59,7 @@ else
                 --dns-search=$clusterName \
                 --restart unless-stopped \
                 -i \
+		--ip=$externalIP \
                 -t hwxu/ambari_2.2_server_node
 fi
 

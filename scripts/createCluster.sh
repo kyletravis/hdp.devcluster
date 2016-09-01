@@ -26,16 +26,11 @@ if grep -q "externalIPs" $iniFile ; then
 
     for i in $(seq 0 $(($len-1)));
     do
-      ./scripts/createNode.sh ${hostNameArr[$i]} $ambariServerHostName $clusterName ${externalIpsArr[$i]}
+      ./createNode.sh ${hostNameArr[$i]} $ambariServerHostName $clusterName ${externalIpsArr[$i]}
     done
 else
     for i in $(seq 0 $(($len-1)));
     do
-      ./scripts/createNode.sh ${hostNameArr[$i]} $ambariServerHostName $clusterName
+      ./createNode.sh ${hostNameArr[$i]} $ambariServerHostName $clusterName ${externalIpsArr[$i]}
     done
 fi
-
-
-
-
-#./scripts/createNode.sh node1 namenode hxucluster 172.16.96.140
