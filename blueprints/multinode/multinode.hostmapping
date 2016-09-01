@@ -1,10 +1,10 @@
 {
-  "blueprint":"threeNode",
+  "blueprint":"multinode",
   "default_password":"admin",
   "host_groups":[
-    {
+    { 
       "name":"namenode",
-      "hosts":[ { "fqdn":"namenode" } ]
+      "hosts":[ { "fqdn":"namenode" } ] 
     },
     {
       "name":"resourcemanager",
@@ -13,6 +13,10 @@
     {
       "name":"hiveserver",
       "hosts":[ { "fqdn":"hiveserver" } ]
+    },
+    {
+      "name":"worker",
+      "hosts":[ {"fqdn":"node1"}, {"fqdn":"node2"}, {"fqdn":"node3"} ]
     }
   ]
 }
