@@ -1,1 +1,1 @@
-./ambari_multi_node.sh 0 3node
+./ambari_multi_node.sh 0 multinode
