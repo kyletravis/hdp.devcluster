@@ -32,35 +32,41 @@ containerName="$nodeName.$clusterName"
 if [ $nodeName != $ambariServerHostName ]; then
     echo "Creating Ambari agent node: $nodeName. Ambari server: $ambariServerHostName"
 
-    docker run --privileged=true \
-                -d \
-                --dns 8.8.8.8 \
-                $portParams \
-                -e AMBARI_SERVER=$ambariServerHostName \
-                --name $containerName \
-                -h $nodeName \
-                --net $clusterName \
-                --dns-search=$clusterName \
-                --restart unless-stopped \
-                -i \
-		--ip=$externalIP \
-                -t hwxu/ambari_2.2_agent_node
+    IP_namenode=$(docker inspect --format "{{ .NetworkSettings.Networks.exam_bridge.IPAddress }}" node1)
+    echo "Namenode/Ambari Server started at $IP_namenode"
+
+    docker run \
+     --network=$clusterName \
+     --privileged=true \
+     -d \
+     --dns 8.8.8.8 \
+     $portParams \
+     -e AMBARI_SERVER=$ambariServerHostName \
+     --name $containerName \
+     -h $nodeName \
+     --dns-search=$clusterName \
+     --restart unless-stopped \
+     -i \
+     --ip=$externalIP \
+     -t hwxu/ambari_2_agent_node
 else
     echo "Creating Ambari server node: $nodeName"
-
-    docker run --privileged=true \
-                -d \
-                --dns 8.8.8.8 \
-                $portParams \
-                -e AMBARI_SERVER=$ambariServerHostName \
-                --name $containerName \
-                -h $nodeName \
-                --net $clusterName \
-                --dns-search=$clusterName \
-                --restart unless-stopped \
-                -i \
-		--ip=$externalIP \
-                -t hwxu/ambari_2.2_server_node
+	
+    docker run \
+     --network=$clusterName \
+     --privileged=true \
+     -d \
+     --dns 8.8.8.8 \
+     $portParams \
+     -e AMBARI_SERVER=$ambariServerHostName \
+     --name $containerName \
+     -h $nodeName \
+     --net $clusterName \
+     --dns-search=$clusterName \
+     --restart unless-stopped \
+     -i \
+     --ip=$externalIP \
+     -t hwxu/ambari_2_server_node
 fi
 
 internalIP=$(docker inspect --format "{{ .NetworkSettings.Networks.$clusterName.IPAddress }}" $containerName)
