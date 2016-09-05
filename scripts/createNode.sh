@@ -36,7 +36,7 @@ if [ $nodeName != $ambariServerHostName ]; then
     echo "Namenode/Ambari Server started at $IP_namenode"
 
     docker run \
-     --network=$clusterName \
+     --net=$clusterName \
      --privileged=true \
      -d \
      --dns 8.8.8.8 \
@@ -53,7 +53,7 @@ else
     echo "Creating Ambari server node: $nodeName"
 	
     docker run \
-     --network=$clusterName \
+     --net=$clusterName \
      --privileged=true \
      -d \
      --dns 8.8.8.8 \
@@ -61,7 +61,6 @@ else
      -e AMBARI_SERVER=$ambariServerHostName \
      --name $containerName \
      -h $nodeName \
-     --net $clusterName \
      --dns-search=$clusterName \
      --restart unless-stopped \
      -i \
